@@ -1,0 +1,99 @@
+@font-face {
+    font-family: Roboto;
+    src: url("fonts/Roboto-Variable.ttf") format("truetype");
+    font-style: normal;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    font-family: Roboto;
+    --border-radius: 50px;
+    --grid-gap: 10px;
+    --panel-padding: 30px;
+    --item-background: #758896;
+    --heading-size: 5.5rem;
+    --text-size: 1.2rem;
+    --transition: 0.25s ease-in-out;
+}
+
+main {
+    box-sizing: border-box;
+    height: 100vh;
+    background: linear-gradient(#181d20, #1f0804);
+    padding: 30px;
+    display: grid;
+    gap: var(--grid-gap);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.panel-left {
+    border-radius: var(--border-radius);
+}
+
+.panel-left {
+    background-color: var(--item-background);
+}
+
+.panel-right {
+    display: grid;
+    gap: var(--grid-gap);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 40% auto;
+}
+
+.panel-item {
+    position: relative;
+    background-color: var(--item-background);
+    border-radius: var(--border-radius);
+}
+
+.panel-item:first-of-type {
+    grid-column: span 2;
+    padding: var(--panel-padding);
+}
+
+.panel-item:first-of-type h1 {
+    font-size: var(--heading-size);
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.panel-item:first-of-type p {
+    font-size: var(--text-size);
+}
+
+.panel-actions {
+    position: absolute;
+    bottom: var(--panel-padding);
+}
+
+.panel-actions a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: black;
+    text-decoration: none;
+    font-size: var(--text-size);
+    transition: opacity 0.3s;
+}
+
+.panel-actions a .svg-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    width: 28px;
+    transition: transform var(--transition);
+}
+
+.panel-actions a:hover .svg-wrapper {
+    transform: scale(1.1);
+}
