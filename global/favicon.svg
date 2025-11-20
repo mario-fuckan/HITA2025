@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+	<title>New Project</title>
+	<style>
+		.s0 { fill: #000000;stroke: #000000;stroke-miterlimit:10 } 
+		.s1 { fill: #ffffff } 
+	</style>
+	<g id="Layer 1">
+		<path id="Shape 1" fill-rule="evenodd" class="s0" d="m64 127c-34.8 0-63-28.2-63-63 0-34.8 28.2-63 63-63 34.8 0 63 28.2 63 63 0 34.8-28.2 63-63 63z"/>
+		<path id="M" class="s1" aria-label="M"  d="m89.6 85l-0.2-46.2h-8.8l-17 28.7-17.3-28.7h-8.8v46.2h10v-27.1l13.5 22.2h4.9l13.6-22.8v27.7z"/>
+	</g>
+</svg>
