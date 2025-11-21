@@ -126,36 +126,29 @@ main {
     border-radius: var(--border-radius);
 }
 
-.arrowlink {
-    z-index: 1;
-    right: 0px;
-    bottom: 0px;
-    position: absolute;
-}
-
 .panel-item-mini p {
+    z-index: 1;
     text-align: center;
     padding: var(--panel-padding);
 }
 
-.panel-item-mini a {
+.linkarrow {
+    z-index: 3;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: var(--panel-padding);
-    right: var(--panel-padding);
     background-color: rgba(0, 0, 0, 0.8);
     padding: 20px;
     border-radius: 50%;
     transition: var(--transition);
 }
 
-.panel-item-mini a:hover {
+.linkarrow:hover {
     transform: scale(1.05);
 }
 
-.panel-item-mini a svg {
+.linkarrow svg {
     width: 20px;
     color: white;
     transform: rotate(45deg);
@@ -164,11 +157,10 @@ main {
 .panel-left {
     overflow: hidden;
     position: relative;
+    border-radius: var(--border-radius);
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("./assets/images/city.webp");
-    border-radius: var(--border-radius);
 }
 
 .shadow-layer {
@@ -183,6 +175,7 @@ main {
     height: 100%;
     box-sizing: border-box;
     gap: 5px;
+    z-index: 2;
     background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.5));
 }
 
@@ -237,4 +230,53 @@ main {
     border: none;
     height: 100%;
     border-radius: 20px;
+}
+
+.arrowforward {
+    bottom: var(--panel-padding);
+    right: var(--panel-padding);
+}
+
+.arrowback {
+    top: var(--panel-padding);
+    left: var(--panel-padding);
+}
+
+.arrowback svg {
+    transform: rotate(270deg);
+}
+
+.panel-right-other {
+    grid-template-rows: max-content auto;
+}
+
+.panel-item-mini-other {
+    justify-content: center;
+}
+
+.panel-item-mini-other img {
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    filter: brightness(0.5);
+    transition: opacity var(--transition);
+}
+
+.panel-item-mini-other:hover img {
+    opacity: 1;
+}
+
+.panel-item-mini-other p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.panel-item-mini-other:hover p {
+    background-color: rbga(0, 0, 0, 0.5);
+    color: white;
+    backdrop-filter: blur(5px);
 }
