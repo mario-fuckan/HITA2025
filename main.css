@@ -72,6 +72,7 @@ section div {
 section div ul {
     list-style-position: inside;
     list-style-type: square;
+    line-height: 32px;
 }
 
 section div ul a {

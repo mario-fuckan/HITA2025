@@ -1,0 +1,163 @@
+@font-face {
+    font-family: OpenSans;
+    src: url(/fonts/OpenSans-Variable.ttf) format("truetype");
+    font-style: normal;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: OpenSans;
+}
+
+:root {
+    --bg-color: #1F1F1F;
+    --text-color: #E8EAE1;
+    --search-input: #4D5156;
+    --search-input-hover: #5F6368;
+    --search-input-focus: #303134;
+    --bg-button: #303134;
+    --bg-bottom: #171717;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.upper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
+    flex: 1;
+}
+
+.upper svg {
+    width: 275px;
+}
+
+.upper input {
+    box-sizing: border-box;
+    padding: 15px;
+    outline: none;
+    border: 1px solid transparent;
+    background-color: var(--search-input);
+    width: 600px;
+    caret-color: var(--text-color);
+    border-radius: 30px;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.upper input:hover {
+    background-color: var(--search-input-hover);
+}
+
+.upper input:focus {
+    background-color: var(--search-input-focus);
+}
+
+.upper .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.upper .buttons button {
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: 1px solid transparent;
+    color: var(--text-color);
+    padding: 8px 15px;
+    background-color: var(--bg-button);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.upper .buttons button:hover {
+    border: 1px solid var(--search-input-hover);
+}
+
+.lower {
+    color: var(--text-color);
+    width: 100%;
+    background-color: var(--bg-bottom);
+}
+
+.lower>div {
+    padding: 13px 30px;
+}
+
+.lower>div p {
+    font-size: 0.95rem;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--search-input);
+}
+
+.links>div {
+    display: flex;
+    gap: 20px;
+}
+
+.links a {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 720px) {
+    .upper svg {
+        width: 200px;
+    }
+
+    .upper input {
+        width: 400px;
+        font-size: 0.8rem;
+    }
+
+    .upper .buttons button {
+        font-size: 0.8rem;
+    }
+
+    .lower>div p {
+        font-size: 0.8rem;
+    }
+
+    .links a {
+        font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .links {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .upper input {
+        width: 320px;
+        padding: 10px;
+    }
+}
