@@ -494,7 +494,7 @@ main {
         flex-direction: column;
     }
 
-    .place {
-        flex-basis: 100px;
+    .place:hover {
+        flex-grow: 4;
     }
 }
