@@ -1,0 +1,148 @@
+@font-face {
+    font-family: HappyMonkey;
+    src: url(./fonts/HappyMonkey-Regular.ttf) format("truetype");
+    font-style: normal;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: HappyMonkey;
+    color: white;
+}
+
+:root {
+    --top: #21ad7e;
+    --bottom: #c784bb;
+}
+
+body {
+    background: linear-gradient(to bottom, var(--top), var(--bottom));
+}
+
+main {
+    padding: 20px 0px 40px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    width: 35%;
+    gap: 20px;
+}
+
+.birthday-person {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.birthday-person img {
+    width: 200px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: right;
+    border-radius: 50%;
+    border: 6px solid var(--bottom);
+}
+
+.birthday-person h2,
+.birthday-person h3 {
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: var(--bottom);
+}
+
+.items {
+    padding: 0px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.item .gift {
+    background-image: url(./assets/gift-cover.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    aspect-ratio: 1;
+    width: 100%;
+    box-sizing: border-box;
+    border: 6px solid white;
+    border-radius: 10px;
+    background-position: center;
+}
+
+.item:first-of-type:hover .gift {
+    background-image: url(./assets/cathappy.gif);
+}
+
+.item:nth-of-type(2):hover .gift {
+    background-image: url(./assets/catwow.gif);
+}
+
+.item:nth-of-type(3):hover .gift {
+    background-image: url(./assets/awesome.gif);
+}
+
+.item:nth-of-type(4):hover .gift {
+    background-image: url(./assets/dexter.gif);
+}
+
+.item:last-of-type .gift {
+    height: 300px;
+}
+
+.item:last-of-type:hover .gift {
+    background-image: url(./assets/catdrink.gif);
+}
+
+@media screen and (max-width: 1440px) {
+    main {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    main {
+        width: 100%;
+    }
+
+    main h1 {
+        font-size: 1.5rem;
+    }
+
+    .birthday-person h2,
+    .birthday-person h3 {
+        font-size: 1.2rem;
+    }
+
+    .item h2 {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    .item:last-of-type .gift {
+        height: 200px;
+    }
+
+    .birthday-person img {
+        width: 170px;
+    }
+}
