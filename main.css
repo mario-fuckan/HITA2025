@@ -26,15 +26,17 @@ main {
     box-sizing: border-box;
     padding: 30px;
     display: grid;
-    gap: calc(var(--padding) * 1.5);
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: max-content;
+    justify-content: center;
+    align-items: flex-start;
+    grid-template-rows: auto;
+    gap: calc(var(--padding) * 1.5);
 }
 
 section {
     display: flex;
     flex-direction: column;
-    padding: var(--padding) var(--padding) 5px var(--padding);
+    padding: var(--padding) var(--padding) 0px var(--padding);
     border-radius: 5px;
     color: white;
     background-color: var(--section-bg);
@@ -57,12 +59,8 @@ section h1 {
     text-transform: uppercase;
 }
 
-section .exercises {
+section>div {
     border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-
-section div {
     display: flex;
     flex-direction: column;
     gap: var(--padding);
