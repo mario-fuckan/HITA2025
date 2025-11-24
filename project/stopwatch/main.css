@@ -1,0 +1,56 @@
+@font-face {
+    font-family: Roboto;
+    src: url("/fonts/Roboto-Variable.ttf") format("truetype");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Digital7;
+    src: url("./fonts/digital7.ttf") format("truetype");
+    font-style: normal;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+::selection {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+:root {
+    font-family: Roboto;
+    --black: #000000;
+    --lime: #00FF00;
+    --white: #F5F3F5;
+    --tomato: #FF674D;
+    --blue: #7776BC;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black);
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+main .timer {
+    font-size: 8rem;
+    color: var(--white);
+    font-family: Digital7;
+}
+
+.hide {
+    display: none;
+}
