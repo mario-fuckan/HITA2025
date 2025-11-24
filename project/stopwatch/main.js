@@ -103,5 +103,4 @@ resetButton.addEventListener("click", handleResetButtonClick)
 
 // Init
 
-timer.textContent = formatTime()
-hideNode(stopButton)
+timer.textContent = formatTime(time)
