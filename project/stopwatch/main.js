@@ -5,12 +5,16 @@ const stopButton = document.querySelector(".stop")
 const resetButton = document.querySelector(".reset")
 const lapButton = document.querySelector(".lap")
 const timer = document.querySelector(".timer")
+const tableBody = document.querySelector("tbody")
+const lapsParent = document.querySelector(".laps")
 
 // Variables
 
 let timerInterval = null
 let time = 0
 let lastDate
+let laps = []
+let lapsSorted = []
 
 // Functions
 
@@ -21,21 +25,19 @@ const updateTime = () => {
 
     lastDate = dateNow
 
-    timer.textContent = formatTime()
+    timer.textContent = formatTime(time)
 }
 
-const formatTime = () => {
-    let tempTime = time
+const formatTime = (ms) => {
+    const minutes = String(Math.floor(ms / 60000))
 
-    const minutes = String(Math.floor(tempTime / 60000))
+    ms = ms % 60000
 
-    tempTime = tempTime % 60000
+    const seconds = String(Math.floor(ms / 1000))
 
-    const seconds = String(Math.floor(tempTime / 1000))
+    ms = ms % 1000
 
-    tempTime = tempTime % 1000
-
-    const milliseconds = String(Math.floor(tempTime / 10))
+    const milliseconds = String(Math.floor(ms / 10))
 
     return `${minutes.padStart(2, "0")}:${seconds.padStart(2, "0")}:${milliseconds.padStart(2, "0")}`
 }
@@ -54,6 +56,28 @@ const enableNode = (node) => {
 
 const disableNode = (node) => {
     node.setAttribute("disabled", "")
+}
+
+const renderLaps = () => {
+    tableBody.innerHTML = ""
+
+    for (const [i, lap] of laps.entries()) {
+        const tableRow = document.createElement("tr")
+
+        const lapsTd = document.createElement("td")
+        const timeTd = document.createElement("td")
+        const totalTd = document.createElement("td")
+
+        lapsTd.textContent = i + 1 + (lap == lapsSorted[0] ? " Fastest" : lap == lapsSorted[lapsSorted.length - 1] && " Slowest")
+        timeTd.textContent = formatTime(lap.time)
+        totalTd.textContent = formatTime(lap.total)
+
+        tableRow.append(lapsTd, timeTd, totalTd)
+
+        tableBody.append(tableRow)
+    }
+
+    lapsParent.scroll(0, lapsParent.scrollHeight)
 }
 
 // Event handlers
@@ -86,13 +110,28 @@ const handleResetButtonClick = () => {
     timerInterval = null
 
     time = 0
-    timer.textContent = formatTime()
+    timer.textContent = formatTime(time)
 
     showNode(startButton)
     hideNode(stopButton)
 
     disableNode(lapButton)
     disableNode(resetButton)
+
+    laps = []
+    lapsSorted = []
+    renderLaps()
+}
+
+const handleLapButtonClick = () => {
+    laps.push({
+        time: laps.length > 0 ? time - laps[laps.length - 1].total : time,
+        total: time
+    })
+
+    lapsSorted = laps.toSorted((a, b) => a.time - b.time)
+
+    renderLaps()
 }
 
 // Define event listeners
@@ -100,6 +139,7 @@ const handleResetButtonClick = () => {
 startButton.addEventListener("click", handleStartButtonClick)
 stopButton.addEventListener("click", handleStopButtonClick)
 resetButton.addEventListener("click", handleResetButtonClick)
+lapButton.addEventListener("click", handleLapButtonClick)
 
 document.addEventListener("keydown", (e) => {
     e.preventDefault()
