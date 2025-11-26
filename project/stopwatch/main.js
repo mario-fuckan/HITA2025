@@ -101,6 +101,12 @@ startButton.addEventListener("click", handleStartButtonClick)
 stopButton.addEventListener("click", handleStopButtonClick)
 resetButton.addEventListener("click", handleResetButtonClick)
 
+document.addEventListener("keydown", (e) => {
+    e.preventDefault()
+
+    e.key == "Backspace" && resetButton.click()
+})
+
 document.addEventListener("keyup", (e) => {
     e.key == " " && (!timerInterval ? startButton.click() : stopButton.click())
 })
