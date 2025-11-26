@@ -120,6 +120,7 @@ const handleResetButtonClick = () => {
 
     laps = []
     lapsSorted = []
+
     renderLaps()
 }
 
