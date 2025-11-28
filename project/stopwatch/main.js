@@ -8,6 +8,17 @@ const timer = document.querySelector(".timer")
 const tableBody = document.querySelector("tbody")
 const lapsParent = document.querySelector(".laps")
 
+// Audio elements
+
+const startAudio = new Audio("./sounds/start.mp3")
+const stopAudio = new Audio("./sounds/stop.mp3")
+const lapAudio = new Audio("./sounds/lap.mp3")
+const runningAudio = new Audio("./sounds/running.mp3")
+
+// Audio element settings
+
+runningAudio.loop = true
+
 // Variables
 
 let timerInterval = null
@@ -15,6 +26,7 @@ let time = 0
 let lastDate
 let laps = []
 let lapsSorted = []
+let runningAudioTimeout = null
 
 // Functions
 
@@ -101,16 +113,31 @@ const handleStartButtonClick = () => {
 
 	enableNode(lapButton)
 	enableNode(resetButton)
+
+	startAudio.currentTime = 0
+	startAudio.play()
+
+	runningAudioTimeout = setTimeout(() => {
+		runningAudio.play()
+	}, (startAudio.duration - 0.6) * 1000)
 }
 
 const handleStopButtonClick = () => {
 	clearInterval(timerInterval)
 	timerInterval = null
 
+	clearTimeout(runningAudioTimeout)
+	runningAudioTimeout = null
+
+	runningAudio.pause()
+
 	showNode(startButton)
 	hideNode(stopButton)
 
 	disableNode(lapButton)
+
+	stopAudio.currentTime = 0
+	stopAudio.play()
 }
 
 const handleResetButtonClick = () => {
@@ -126,6 +153,8 @@ const handleResetButtonClick = () => {
 	disableNode(lapButton)
 	disableNode(resetButton)
 
+	runningAudio.pause()
+
 	laps = []
 	lapsSorted = []
 
@@ -139,6 +168,9 @@ const handleLapButtonClick = () => {
 	})
 
 	lapsSorted = laps.toSorted((a, b) => a.time - b.time)
+
+	lapAudio.currentTime = 0
+	lapAudio.play()
 
 	renderLaps()
 }
