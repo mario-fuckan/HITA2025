@@ -151,9 +151,7 @@ resetButton.addEventListener("click", handleResetButtonClick)
 lapButton.addEventListener("click", handleLapButtonClick)
 
 document.addEventListener("keydown", (e) => {
-	e.key == " " &&
-		(e.preventDefault(),
-			!timerInterval ? startButton.click() : stopButton.click())
+	e.key == " " && (e.preventDefault(), !timerInterval ? startButton.click() : stopButton.click())
 
 	e.key == "Backspace" && (e.preventDefault(), resetButton.click())
 
