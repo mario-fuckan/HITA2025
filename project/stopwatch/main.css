@@ -79,7 +79,7 @@ body {
 }
 
 .controls button:not(:disabled):active {
-	transform: scale(0.9);
+	transform: scale(0.95);
 }
 
 .controls button:disabled {
