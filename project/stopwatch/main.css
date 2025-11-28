@@ -1,224 +1,224 @@
 @font-face {
-    font-family: Roboto;
-    src: url("/fonts/Roboto-Variable.ttf") format("truetype");
-    font-style: normal;
+	font-family: Roboto;
+	src: url("/fonts/Roboto-Variable.ttf") format("truetype");
+	font-style: normal;
 }
 
 @font-face {
-    font-family: Digital7;
-    src: url("./fonts/digital7.ttf") format("truetype");
-    font-style: normal;
+	font-family: Digital7;
+	src: url("./fonts/digital7.ttf") format("truetype");
+	font-style: normal;
 }
 
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 ::selection {
-    background-color: var(--white);
-    color: black;
+	background-color: var(--white);
+	color: black;
 }
 
 :root {
-    font-family: Roboto;
-    --lime: #00FF00;
-    --white: #F5F3F5;
-    --tomato: #FF674D;
-    --blue: #7776BC;
-    --border: #585858;
+	font-family: Roboto;
+	--lime: #00FF00;
+	--white: #F5F3F5;
+	--tomato: #FF674D;
+	--blue: #7776BC;
+	--border: #585858;
 }
 
 body {
-    box-sizing: border-box;
-    padding: 0px 1.5rem 3rem 1.5rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 40% 1fr;
-    height: 100vh;
-    background-color: black;
-    gap: 2.5rem;
+	box-sizing: border-box;
+	padding: 0px 1.5rem 3rem 1.5rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 40% 1fr;
+	height: 100vh;
+	background-color: black;
+	gap: 2.5rem;
 }
 
 .stopwatch {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 1.5rem;
 }
 
 .timer {
-    font-size: 8rem;
-    color: var(--white);
-    font-family: Digital7;
+	font-size: 8rem;
+	color: var(--white);
+	font-family: Digital7;
 }
 
 .hide {
-    display: none !important;
-    border: 2px solid var(--border);
+	display: none !important;
+	border: 2px solid var(--border);
 }
 
 .controls {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	gap: 1.5rem;
+	justify-content: center;
+	align-items: center;
 }
 
 .controls button {
-    border: 2px solid transparent;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    cursor: pointer;
+	border: 2px solid transparent;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	cursor: pointer;
 }
 
 .controls button:disabled {
-    cursor: default;
+	cursor: default;
 }
 
 .controls button svg {
-    width: 2.2rem;
-    color: black;
+	width: 2.2rem;
+	color: black;
 }
 
 .start,
 .stop {
-    background-color: var(--lime);
+	background-color: var(--lime);
 }
 
 .laps {
-    margin: 0 auto;
-    width: 40%;
-    color: var(--white);
-    box-sizing: border-box;
-    overflow: auto;
+	margin: 0 auto;
+	width: 40%;
+	color: var(--white);
+	box-sizing: border-box;
+	overflow: auto;
 }
 
 .laps::-webkit-scrollbar {
-    width: 0.5rem;
-    background-color: transparent;
+	width: 0.5rem;
+	background-color: transparent;
 }
 
 .laps::-webkit-scrollbar-thumb {
-    border-radius: 1rem;
-    background-color: var(--border);
+	border-radius: 1rem;
+	background-color: var(--border);
 }
 
 table {
-    padding: 0 0.5rem;
-    font-size: 0.95rem;
-    width: 100%;
-    table-layout: fixed;
-    border-spacing: 0;
+	padding: 0 0.5rem;
+	font-size: 0.95rem;
+	width: 100%;
+	table-layout: fixed;
+	border-spacing: 0;
 }
 
 table th,
 table td {
-    text-align: left;
-    word-spacing: 1.5rem;
-    padding: 1rem 0;
+	text-align: left;
+	word-spacing: 1.5rem;
+	padding: 1rem 0;
 }
 
 thead {
-    position: sticky;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+	position: sticky;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(5px);
 }
 
 thead th {
-    border-bottom: 1px solid var(--border);
+	border-bottom: 1px solid var(--border);
 }
 
 @media screen and (max-width: 1500px) {
-    body {
-        grid-template-rows: 50% 1fr;
-        gap: 4rem;
-    }
+	body {
+		grid-template-rows: 50% 1fr;
+		gap: 4rem;
+	}
 
-    .laps {
-        width: 50%;
-    }
+	.laps {
+		width: 50%;
+	}
 }
 
 @media screen and (max-width: 1250px) {
-    .laps {
-        width: 60%;
-    }
+	.laps {
+		width: 60%;
+	}
 }
 
 @media screen and (max-width: 1024px) {
-    .laps {
-        width: 80%;
-    }
+	.laps {
+		width: 80%;
+	}
 }
 
 @media screen and (max-width: 768px) {
-    .laps {
-        width: 100%;
-    }
+	.laps {
+		width: 100%;
+	}
 }
 
 @media screen and (max-width: 600px) {
-    .timer {
-        font-size: 6rem;
-    }
+	.timer {
+		font-size: 6rem;
+	}
 
-    .controls button {
-        padding: 0.5rem;
-    }
+	.controls button {
+		padding: 0.5rem;
+	}
 
-    .controls button svg {
-        width: 2rem;
-    }
+	.controls button svg {
+		width: 2rem;
+	}
 }
 
 @media screen and (max-width: 425px) {
-    .timer {
-        font-size: 5rem;
-    }
+	.timer {
+		font-size: 5rem;
+	}
 
-    body {
-        grid-template-rows: auto 1fr;
-        gap: 3rem;
-        padding: 0 0.5rem;
-    }
+	body {
+		grid-template-rows: auto 1fr;
+		gap: 3rem;
+		padding: 0 0.5rem;
+	}
 
-    .stopwatch {
-        margin-top: 4rem
-    }
+	.stopwatch {
+		margin-top: 4rem
+	}
 
-    table {
-        table-layout: auto;
-        font-size: 0.9rem;
-    }
+	table {
+		table-layout: auto;
+		font-size: 0.9rem;
+	}
 }
 
 @media screen and (max-width: 335px) {
-    .timer {
-        font-size: 4rem;
-    }
+	.timer {
+		font-size: 4rem;
+	}
 
-    .controls button svg {
-        width: 1.5rem;
-    }
+	.controls button svg {
+		width: 1.5rem;
+	}
 
-    body {
-        gap: 2.5rem;
-    }
+	body {
+		gap: 2.5rem;
+	}
 }
 
 @media screen and (max-width: 290px) {
-    table {
-        font-size: 0.7rem;
-    }
+	table {
+		font-size: 0.7rem;
+	}
 
-    table th,
-    table td {
-        word-spacing: 1rem;
-    }
+	table th,
+	table td {
+		word-spacing: 1rem;
+	}
 }

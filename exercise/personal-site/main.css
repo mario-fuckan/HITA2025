@@ -1,56 +1,56 @@
 :root {
-    --bg-color: #13262F;
-    --lavander: #E9E6FF;
+	--bg-color: #13262F;
+	--lavander: #E9E6FF;
 }
 
 * {
-    font-family: Orbitron;
+	font-family: Orbitron;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--lavander);
+	background-color: var(--bg-color);
+	color: var(--lavander);
 }
 
 main {
-    padding: 20px;
+	padding: 20px;
 }
 
 main p a {
-    color: var(--lavander);
+	color: var(--lavander);
 }
 
 main input {
-    display: block;
-    width: 150px;
-    background-color: transparent;
-    border: 1px solid var(--lavander);
-    padding: 5px 10px;
-    border-radius: 10px;
-    color: var(--lavander);
-    box-sizing: border-box;
-    margin-bottom: 10px;
+	display: block;
+	width: 150px;
+	background-color: transparent;
+	border: 1px solid var(--lavander);
+	padding: 5px 10px;
+	border-radius: 10px;
+	color: var(--lavander);
+	box-sizing: border-box;
+	margin-bottom: 10px;
 }
 
 main input::placeholder {
-    color: var(--lavander);
+	color: var(--lavander);
 }
 
 main button {
-    border: none;
-    border-radius: 10px;
-    padding: 5px 10px;
-    width: 150px;
-    font-weight: bold;
-    color: var(--bg-color);
-    cursor: pointer;
+	border: none;
+	border-radius: 10px;
+	padding: 5px 10px;
+	width: 150px;
+	font-weight: bold;
+	color: var(--bg-color);
+	cursor: pointer;
 }
 
 main img {
-    max-width: 150px;
-    aspect-ratio: 1;
-    object-fit: cover;
-    object-position: right;
-    border-radius: 20px;
-    border: 4px solid var(--lavander);
+	max-width: 150px;
+	aspect-ratio: 1;
+	object-fit: cover;
+	object-position: right;
+	border-radius: 20px;
+	border: 4px solid var(--lavander);
 }
