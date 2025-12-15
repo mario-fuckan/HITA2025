@@ -1,37 +1,5 @@
 // BMI START
 
-const getBMIResult = (gender, bmi) => {
-	if (gender == "m") {
-		if (bmi < 20.7) {
-			return "Too low"
-		} else if (bmi < 26.4) {
-			return "Ideal"
-		} else if (bmi < 27.8) {
-			return "A little above normal"
-		} else if (bmi < 31.1) {
-			return "High"
-		} else if (bmi < 45.3) {
-			return "Too high"
-		} else {
-			return "Extremely high"
-		}
-	} else {
-		if (bmi < 19.1) {
-			return "Too low"
-		} else if (bmi < 25.8) {
-			return "Ideal"
-		} else if (bmi < 27.3) {
-			return "A little above normal"
-		} else if (bmi < 32.2) {
-			return "High"
-		} else if (bmi < 44.7) {
-			return "Too high"
-		} else {
-			return "Extremely high"
-		}
-	}
-}
-
 const BMICalculator = () => {
 	let height = null
 	let weight = null
@@ -64,7 +32,7 @@ const BMICalculator = () => {
 
 		console.log(bmi, weight, height)
 		console.log(`BMI is: ${bmi}`)
-		console.log(getBMIResult(gender, bmi))
+		console.log(config.bmi[gender].find(item => bmi < item.max).result)
 
 		const more = prompt("More: Y / N").toLowerCase()
 
@@ -76,16 +44,8 @@ const BMICalculator = () => {
 
 // CALORIE CALCULATOR START
 
-const activityLevels = new Map([
-	[1, 1.2],
-	[2, 1.375],
-	[3, 1.55],
-	[4, 1.725],
-	[5, 1.9]
-])
-
 const getBMR = (gender, weight, height, age) => {
-	return gender == "m" ? (10 * weight) + (6.25 * height) - (5 * age) + 5 : (10 * weight) + (6.25 * height) - (5 * age) - 161
+	return gender === "m" ? (10 * weight) + (6.25 * height) - (5 * age) + 5 : (10 * weight) + (6.25 * height) - (5 * age) - 161
 }
 
 const calorieCalculator = () => {
@@ -123,19 +83,15 @@ const calorieCalculator = () => {
 		} while (isNaN(weight))
 
 		do {
-			console.log(`
-			1 - Sedentary (little to no exercise)
-			2 - Light (exercise 1-3 times a week)
-			3 - Moderate (exercise 4-5 times a week)
-			4 - Active (daily exercise)
-			5 - Very active (exercising 6-7 times a week)
-			`)
+			for (const [k, v] of Object.entries(config.activityLevels)) {
+				console.log(`${k} - ${v.name}`)
+			}
 
 			activityLevel = parseInt(prompt("How active are you? (1-5):"))
 		} while (isNaN(activityLevel) || activityLevel < 1 || activityLevel > 5)
 
 		const bmr = getBMR(gender, weight, height, age)
-		const tdee = bmr * activityLevels.get(activityLevel)
+		const tdee = Math.round(bmr * config.activityLevels[activityLevel].multiplier)
 
 		console.log(`Your basal metabolic rate is: ${bmr} calories/day.`)
 		console.log(`Your Total Daily Energy Expenditure: ${tdee} calories/day`)
@@ -152,22 +108,86 @@ const calorieCalculator = () => {
 
 // HEART RATE CALCULATOR START
 
-const heartRateCalculator = () => {
+const calculateTargetHeartRate = (hrr, intensity, rhr) => {
+	return Math.round((hrr * intensity) + rhr)
+}
 
+const heartRateCalculator = () => {
+	let age = null
+	let rhr = null
+
+	console.log("Let's estimate your heart rate!")
+
+	while (true) {
+		do {
+			age = parseInt(prompt("How old are you?"))
+
+			if (isNaN(age)) console.log("Please enter a valid number.")
+		} while (isNaN(age))
+
+		do {
+			rhr = parseInt(prompt("What's your resting heart rate?"))
+
+			if (isNaN(rhr)) console.log("Please enter a valid number.")
+		} while (isNaN(rhr))
+
+		const mhr = 220 - age
+		const hrr = mhr - rhr
+
+		for (const item of config.heartRateZones) {
+			console.log(`${item.name}: ${item.min * 100}% - ${item.max * 100}%`)
+			console.log(`Target zone: ${calculateTargetHeartRate(hrr, item.min, rhr)} - ${calculateTargetHeartRate(hrr, item.max, rhr)} bpm`)
+		}
+
+		const more = prompt("More: Y / N").toLowerCase()
+
+		if (more != "y") break
+	}
 }
 
 // HEART RATE CALCULATOR END
 
 // MAIN LOOP AND CONFIG
 
-/*
-const botName = "Aid"
-const botYear = 2025
-console.log(`Hello! My name is ${botName}.
-I was created in ${botYear}.`)
+const config = {
+	botName: "Aid",
+	botYear: 2025,
+	bmi: {
+		m: [
+			{ max: 20.7, result: "Too low" },
+			{ max: 26.4, result: "Ideal" },
+			{ max: 27.8, result: "A little above normal" },
+			{ max: 31.1, result: "High" },
+			{ max: 45.3, result: "Too high" },
+			{ max: Infinity, result: "Extremely high" }
+		],
+		f: [
+			{ max: 19.1, result: "Too low" },
+			{ max: 25.8, result: "Ideal" },
+			{ max: 27.3, result: "A little above normal" },
+			{ max: 32.2, result: "High" },
+			{ max: 44.7, result: "Too high" },
+			{ max: Infinity, result: "Extremely high" }
+		]
+	},
+	activityLevels: {
+		1: { name: "Sedentary (little to no exercise)", multiplier: 1.2 },
+		2: { name: "Light (exercise 1-3 times a week)", multiplier: 1.375 },
+		3: { name: "Moderate (exercise 4-5 times a week)", multiplier: 1.55 },
+		4: { name: "Active (daily exercise)", multiplier: 1.725 },
+		5: { name: "Very active (exercising 6-7 times a week)", multiplier: 1.9 }
+	},
+	heartRateZones: [
+		{ name: "Fat burning", min: 0.6, max: 0.7 },
+		{ name: "Cardio/aerobic", min: 0.7, max: 0.85 },
+		{ name: "Max effort/performance", min: 0.85, max: 0.95 }
+	]
+}
+
+console.log(`Hello! My name is ${config.botName}.
+I was created in ${config.botYear}.`)
 
 const yourName = prompt("Please, remind me of your name.")
-*/
 
 let run = true
 
