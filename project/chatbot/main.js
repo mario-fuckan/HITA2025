@@ -21,7 +21,6 @@ const BMICalculator = () => {
 
 		const bmi = parseFloat((weight / height ** 2).toFixed(6))
 
-		console.log(bmi, weight, height)
 		console.log(`BMI is: ${bmi}`)
 		console.log(config.bmi.find(item => bmi < item.max).result)
 
