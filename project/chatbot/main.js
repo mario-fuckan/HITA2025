@@ -3,7 +3,6 @@
 const BMICalculator = () => {
 	let height = null
 	let weight = null
-	let gender = null
 
 	console.log("Let's test your BMI index!")
 
@@ -20,19 +19,11 @@ const BMICalculator = () => {
 			if (isNaN(weight)) console.log("Please enter a valid number.")
 		} while (isNaN(weight))
 
-		do {
-			gender = prompt("Enter your gender (M/F):").toLowerCase()
-
-			if (gender !== "m" && gender !== "f") console.log("Please, try again")
-		} while (gender !== "m" && gender !== "f")
-
-		console.log(gender)
-
 		const bmi = parseFloat((weight / height ** 2).toFixed(6))
 
 		console.log(bmi, weight, height)
 		console.log(`BMI is: ${bmi}`)
-		console.log(config.bmi[gender].find(item => bmi < item.max).result)
+		console.log(config.bmi.find(item => bmi < item.max).result)
 
 		const more = prompt("More: Y / N").toLowerCase()
 
@@ -152,24 +143,14 @@ const heartRateCalculator = () => {
 const config = {
 	botName: "Aid",
 	botYear: 2025,
-	bmi: {
-		m: [
-			{ max: 20.7, result: "Too low" },
-			{ max: 26.4, result: "Ideal" },
-			{ max: 27.8, result: "A little above normal" },
-			{ max: 31.1, result: "High" },
-			{ max: 45.3, result: "Too high" },
-			{ max: Infinity, result: "Extremely high" }
-		],
-		f: [
-			{ max: 19.1, result: "Too low" },
-			{ max: 25.8, result: "Ideal" },
-			{ max: 27.3, result: "A little above normal" },
-			{ max: 32.2, result: "High" },
-			{ max: 44.7, result: "Too high" },
-			{ max: Infinity, result: "Extremely high" }
-		]
-	},
+	bmi: [
+		{ max: 18.5, result: "Underweight" },
+		{ max: 24.9, result: "Healthy weight" },
+		{ max: 29.9, result: "Overweight" },
+		{ max: 34.9, result: "Obese (Class I)" },
+		{ max: 39.9, result: "Obese (Class II)" },
+		{ max: Infinity, result: "Obese (Class III)" }
+	],
 	activityLevels: {
 		1: { name: "Sedentary (little to no exercise)", multiplier: 1.2 },
 		2: { name: "Light (exercise 1-3 times a week)", multiplier: 1.375 },
