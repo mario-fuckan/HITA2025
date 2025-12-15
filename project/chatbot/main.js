@@ -23,8 +23,8 @@ const BMICalculator = () => {
 		do {
 			gender = prompt("Enter your gender (M/F):").toLowerCase()
 
-			if (gender != "m" && gender != "f") console.log("Please, try again")
-		} while (gender != "m" && gender != "f")
+			if (gender !== "m" && gender !== "f") console.log("Please, try again")
+		} while (gender !== "m" && gender !== "f")
 
 		console.log(gender)
 
@@ -36,7 +36,7 @@ const BMICalculator = () => {
 
 		const more = prompt("More: Y / N").toLowerCase()
 
-		if (more != "y") break
+		if (more !== "y") break
 	}
 }
 
@@ -67,8 +67,8 @@ const calorieCalculator = () => {
 		do {
 			gender = prompt("Enter your gender (M/F):").toLowerCase()
 
-			if (gender != "m" && gender != "f") console.log("Please, try again")
-		} while (gender != "m" && gender != "f")
+			if (gender !== "m" && gender !== "f") console.log("Please, try again")
+		} while (gender !== "m" && gender !== "f")
 
 		do {
 			height = parseFloat(prompt("Enter your height (cm):"))
@@ -100,7 +100,7 @@ const calorieCalculator = () => {
 
 		const more = prompt("More: Y / N").toLowerCase()
 
-		if (more != "y") break
+		if (more !== "y") break
 	}
 }
 
@@ -141,7 +141,7 @@ const heartRateCalculator = () => {
 
 		const more = prompt("More: Y / N").toLowerCase()
 
-		if (more != "y") break
+		if (more !== "y") break
 	}
 }
 
