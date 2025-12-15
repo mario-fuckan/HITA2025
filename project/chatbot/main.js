@@ -9,13 +9,13 @@ const BMICalculator = () => {
 
 	while (true) {
 		do {
-			height = parseFloat(prompt("Enter your height:")) / 100
+			height = parseFloat(prompt("Enter your height (cm):")) / 100
 
 			if (isNaN(height)) console.log("Please enter a valid number.")
 		} while (isNaN(height))
 
 		do {
-			weight = parseFloat(prompt("Enter your weight:"))
+			weight = parseFloat(prompt("Enter your weight (kg):"))
 
 			if (isNaN(weight)) console.log("Please enter a valid number.")
 		} while (isNaN(weight))
@@ -71,13 +71,13 @@ const calorieCalculator = () => {
 		} while (gender != "m" && gender != "f")
 
 		do {
-			height = parseFloat(prompt("Enter your height:"))
+			height = parseFloat(prompt("Enter your height (cm):"))
 
 			if (isNaN(height)) console.log("Please enter a valid number.")
 		} while (isNaN(height))
 
 		do {
-			weight = parseFloat(prompt("Enter your weight:"))
+			weight = parseFloat(prompt("Enter your weight (kg):"))
 
 			if (isNaN(weight)) console.log("Please enter a valid number.")
 		} while (isNaN(weight))
